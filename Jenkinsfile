@@ -44,12 +44,13 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'logs/*.log,target/*.jar,allure-results/**', allowEmptyArchive: true
-            allure([
-                commandline: 'Allure 3',
+            // 修正后的 allure 语法，匹配你的工具配置
+            allure(
+                jdk: '',
                 includeProperties: false,
                 reportBuildPolicy: 'ALWAYS',
                 results: [[path: 'allure-results']]
-            ])
+            )
         }
     }
 }
