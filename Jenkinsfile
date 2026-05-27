@@ -44,13 +44,9 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'logs/*.log,target/*.jar,allure-results/**', allowEmptyArchive: true
-            // 修正后的 allure 语法，匹配你的工具配置
-            allure(
-                jdk: '',
-                includeProperties: false,
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-results']]
-            )
+
+            // 正确写法：不要大括号，不要commandline，参数用逗号分隔
+            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
         }
     }
 }
