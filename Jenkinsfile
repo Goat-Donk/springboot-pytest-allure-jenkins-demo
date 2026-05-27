@@ -44,9 +44,9 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'logs/*.log,target/*.jar,allure-results/**', allowEmptyArchive: true
-
-            // 正确写法：不要大括号，不要commandline，参数用逗号分隔
-            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            
+            // ✅ 全世界最兼容的写法，不会报任何错
+            allure 'allure-results'
         }
     }
 }
