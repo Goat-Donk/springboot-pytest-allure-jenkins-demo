@@ -44,9 +44,7 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'logs/*.log,target/*.jar,allure-results/**', allowEmptyArchive: true
-            
-            // ✅ 全世界最兼容的写法，不会报任何错
-            allure 'allure-results'
+            allure commandline: 'Allure 3', includeProperties: false, jdk: '', resultPolicy: 'LEAVE_AS_IS', results: [[path: 'allure-results']]
         }
     }
 }
