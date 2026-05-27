@@ -1,0 +1,11 @@
+target/
+.m2/
+.idea/
+.vscode/
+__pycache__/
+.pytest_cache/
+allure-results/
+allure-report/
+logs/
+run/
+*.pyc

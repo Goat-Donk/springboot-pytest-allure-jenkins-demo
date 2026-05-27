@@ -1,0 +1,50 @@
+[
+  {
+    "case_name": "create user with complete data",
+    "payload": {
+      "username": "tom_{suffix}",
+      "email": "tom_{suffix}@example.com",
+      "age": 22,
+      "city": "Shanghai"
+    },
+    "expected_status": 200,
+    "expected_code": 0,
+    "expected_message": "create success"
+  },
+  {
+    "case_name": "create another valid user",
+    "payload": {
+      "username": "lucy_{suffix}",
+      "email": "lucy_{suffix}@example.com",
+      "age": 28,
+      "city": "Shenzhen"
+    },
+    "expected_status": 200,
+    "expected_code": 0,
+    "expected_message": "create success"
+  },
+  {
+    "case_name": "reject invalid email",
+    "payload": {
+      "username": "bad_email_{suffix}",
+      "email": "not-an-email",
+      "age": 26,
+      "city": "Hangzhou"
+    },
+    "expected_status": 400,
+    "expected_code": 400,
+    "expected_message_contains": "email format is invalid"
+  },
+  {
+    "case_name": "reject blank username",
+    "payload": {
+      "username": "",
+      "email": "blank_{suffix}@example.com",
+      "age": 19,
+      "city": "Chengdu"
+    },
+    "expected_status": 400,
+    "expected_code": 400,
+    "expected_message_contains": "username cannot be blank"
+  }
+]
