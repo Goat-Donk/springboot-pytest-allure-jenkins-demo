@@ -128,7 +128,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run_local_ci.ps1
 4. `Script Path` 填 `Jenkinsfile`
 5. 保存
 
-### 5.4 提交代码后自动触发
+### 5.4 提交代码后自动触发2
 
 这个项目的 `Jenkinsfile` 已经内置了：
 
