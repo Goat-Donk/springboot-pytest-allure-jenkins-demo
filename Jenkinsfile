@@ -6,7 +6,6 @@ pipeline {
     }
 
     options {
-        timestamps()
         disableConcurrentBuilds()
     }
 
@@ -45,7 +44,11 @@ pipeline {
     post {
         always {
             archiveArtifacts artifacts: 'logs/*.log,target/*.jar', allowEmptyArchive: true
-            allure includeProperties: false, jdk: '', results: [[path: 'allure-results']]
+            step([
+                $class: 'AllureReportPublisher',
+                reportBuildPolicy: 'ALWAYS',
+                results: [[path: 'allure-results']]
+            ])
         }
     }
 }
