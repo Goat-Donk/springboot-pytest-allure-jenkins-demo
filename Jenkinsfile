@@ -43,12 +43,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'logs/*.log,target/*.jar', allowEmptyArchive: true
-            step([
-                $class: 'AllureReportPublisher',
-                reportBuildPolicy: 'ALWAYS',
-                results: [[path: 'allure-results']]
-            ])
+            archiveArtifacts artifacts: 'logs/*.log,target/*.jar,allure-results/**', allowEmptyArchive: true
         }
     }
 }
